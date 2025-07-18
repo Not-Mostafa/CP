@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define FIO ios ::sync_with_stdio(false), cin.tie(nullptr), cout.tie(NULL)
+#define ll long long
+#define ld long double
+#define all(container) (container).begin(), (container).end()
+#define cl(x,y)  (x + y - 1) / y
+#define lp(size) for (int i = 0; i < size; i++)
+#define rlp(size) for (int i = size - 1; i >= 0; i--)
+#define ai(thing) for(auto& i : thing) cin>>i;
+#define au(thing) for(auto& i : thing)
+typedef vector<int> vi;
+typedef vector<ll> vll;
+const int N = 1e5 + 5;
+const int M = 1e9 + 7;
+const ll OO = 0x3f3f3f3f3f3f3f3f;
+
+void solve()
+{
+    ll n;cin>>n;
+    ll v[n][n];
+    vll f(10000);
+    lp(n){
+        for(int j = 0 ; j < n ; j++){
+            cin>>v[i][j];
+        }
+    }
+    lp(n) f[v[i][0]] = 1;
+    for(int i = 1;i < n;i++) f[v[n-1][i]] = 1;
+    ll ans;
+    for(int i = 1 ;i < 10000;i++){
+        if(f[i] == 0){
+            ans = i;
+            break;
+        }
+    }
+    cout<<ans<<" ";
+    lp(n){
+        cout<<v[i][0]<<" ";
+    }
+    for(int i = 1;i < n;i++){
+        cout<<v[n-1][i]<<" ";
+    }
+    cout<<endl;
+
+}
+int main() {
+    FIO;
+    int test_cases = 1;
+    cin >> test_cases;
+    while (test_cases--) {
+        solve();
+    }
+    return 0;
+}
